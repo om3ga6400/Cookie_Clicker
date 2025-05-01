@@ -1,4 +1,5 @@
 # CookieClicker
+Mirror of orteil.dashnet.org/cookieclicker and auto-update script.
 
 ## Todo
 
