@@ -3,6 +3,7 @@ Mirror of https://orteil.dashnet.org/cookieclicker that has an auto-update scrip
 
 ## Todo
 
-- Make updater download beta 
-- Make updater auto scan main dir so updating _miscList.txt will be automatically updated 
+- ~~Make updater download beta~~
+- ~Make updater auto scan main dir so updating _miscList.txt will be automatically updated
 - Add progress bar to updater
+- Verify that everything works correctly 
