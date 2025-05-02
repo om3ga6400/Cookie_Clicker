@@ -400,7 +400,6 @@
 ./main.js
 ./excanvas.compiled.js
 ./index.html
-./README.md
 ./beta/ascendCalibrator.js
 ./beta/showads.js
 ./beta/snd/pop2.mp3
