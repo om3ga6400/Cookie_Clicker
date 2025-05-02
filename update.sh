@@ -1,5 +1,6 @@
 #!/bin/sh
-xargs -a _delList.txt rm -rf -- && rm -f _delList.txt
+
+xargs rm -f < _delList.txt
 
 mkdir -p snd loc img beta/loc beta/img beta/snd
 
@@ -48,17 +49,9 @@ cd ../
 
 #Beta end
 
-find . -maxdepth 1 -type f ! -name '_delList.txt' ! -name '_miscList.txt' ! -iname 'readme.md' ! -iname 'update.sh' > _delList.txt
+find . -type f ! -path './.git/*' ! -name '_delList.txt' ! -name '_miscList.txt' ! -name 'readme.md' ! -iname 'update.sh' > _delList.txt
 
-for dir in snd loc img; do
-  if [ -d "$dir" ]; then
-    find "$dir" -type f ! -iname 'readme.md' ! -iname 'update.sh' ! -name '_miscList.txt' ! -name '_delList.txt' >> _delList.txt
-    find "$dir" -type d >> _delList.txt
-  fi
-done
-
-# Add all files and dirs from beta/
-if [ -d "beta" ]; then
-  find beta -type f >> _delList.txt
-  find beta -type d >> _delList.txt
-fi
+grep -Eho '["'\''][^/"'\'']+\.(js|css|html|json|xml)(\?[^"'\''"]*)?["'\'']' $(grep -Fxv '' _delList.txt) |
+grep -Ev '["'\''](https?:|\/\/)' |
+sed -E "s/^['\"]//;s/['\"].*//;s/\?.*//" |
+grep -v / | sort -u > _miscList.txt
